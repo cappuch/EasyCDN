@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CDN</h1>
+        
+        <div class="upload-section">
+            <h2>Upload File (Limit of 500MB)</h2>
+            <form id="uploadForm">
+                <input type="file" id="fileInput" required>
+                <button type="submit">Upload</button>
+            </form>
+            
+            <div id="progressContainer" class="progress-container">
+                <div class="progress">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+                <div id="progressText" class="progress-text">0%</div>
+            </div>
+            
+            <div id="uploadStatus"></div>
+        </div>
+        
+        <div id="duplicateWarning" class="duplicate-warning"></div>
+        
+        <div class="links">
+            <a href="{{ url_for('dashboard') }}" class="button">View Dashboard</a>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

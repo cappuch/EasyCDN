@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        
+        <div class="files-list">
+            <h2>Uploaded Files</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Size</th>
+                        <th>Created</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for file in files %}
+                    <tr>
+                        <td>{{ file.name }}</td>
+                        <td>{{ (file.size / 1024)|round(2) }} KB</td>
+                        <td>{{ file.created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                        <td><a href="{{ file.url }}" target="_blank">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="links">
+            <a href="{{ url_for('index') }}" class="button">Back to Upload</a>
+        </div>
+    </div>
+</body>
+</html>
